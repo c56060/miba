@@ -40,11 +40,13 @@ if len(image_files) != len(names):
 all_image_items = []
 for index, (image_file, name) in enumerate(zip(image_files, names), start=1):
     formatted_index = f"{index:03d}"
-    image_abs_path = os.path.abspath(os.path.join(image_folder, image_file)).replace('\\', '/')
+    # 计算相对路径
+    relative_path = os.path.relpath(image_folder, start=root_dir)
+    image_rel_path = os.path.join(relative_path, image_file).replace('\\', '/')
     item_html = f"""
     <div class="photo-card photography-card">
         <div class="image-container">
-            <img data-src="{image_abs_path}" alt="{name}" loading="lazy">
+            <img data-src="../展示图/名称/{image_rel_path}" alt="{name}" loading="lazy">
         </div>
         <a href="detail_{formatted_index}.html" class="name-link">{name}</a>
         <div class="overlay">
