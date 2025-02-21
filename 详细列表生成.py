@@ -113,46 +113,55 @@ nav_template = """
 table_configs = [
     {
         "h1_title": "B站UP",
+        "h2_title": "打包100",
         "txt_path": "名称/B站UP.txt",
         "remark_txt_path": "名称/B站UP - 备注.txt"
     },
     {
         "h1_title": "B站UP-收藏集",
+        "h2_title": "打包50",
         "txt_path": "名称/B站UP-收藏集.txt",
         "remark_txt_path": "名称/B站UP-收藏集 - 备注.txt"
     },
     {
         "h1_title": "充电哄睡",
+        "h2_title": "打包50",
         "txt_path": "名称/充电哄睡.txt",
         "remark_txt_path": "名称/充电哄睡 - 备注.txt"
     },
     {
         "h1_title": "机构合集",
+        "h2_title": "打包1999",
         "txt_path": "名称/机构合集.txt",
         "remark_txt_path": "名称/机构合集 - 备注.txt"
     },
     {
         "h1_title": "Cosplay合集",
+        "h2_title": "打包700",
         "txt_path": "名称/Cosplay合集.txt",
         "remark_txt_path": "名称/Cosplay合集 - 备注.txt"
     },
     {
         "h1_title": "模特专辑",
+        "h2_title": "打包200",
         "txt_path": "名称/模特专辑.txt",
         "remark_txt_path": "名称/模特专辑 - 备注.txt"
     },
     {
         "h1_title": "微博抖音",
+        "h2_title": "打包500",
         "txt_path": "名称/微博抖音.txt",
         "remark_txt_path": "名称/微博抖音 - 备注.txt"
     },
     {
         "h1_title": "微密圈",
+        "h2_title": "打包600",
         "txt_path": "名称/微密圈.txt",
         "remark_txt_path": "名称/微密圈 - 备注.txt"
     },
     {
         "h1_title": "主播热舞",
+        "h2_title": "打包200",
         "txt_path": "名称/主播热舞.txt",
         "remark_txt_path": "名称/主播热舞 - 备注.txt"
     }
@@ -173,6 +182,7 @@ def generate_static_html():
     table_content = ""
     for config in table_configs:
         h1_title = config["h1_title"]
+        h2_title = config.get("h2_title", "")  # 使用 get 方法提供默认值
         txt_path = os.path.join(root_dir, config["txt_path"])
         remark_txt_path = os.path.join(root_dir, config["remark_txt_path"])
 
@@ -192,6 +202,8 @@ def generate_static_html():
 
         # 生成表格的 HTML 代码
         table = f'<h1 id="{h1_title.replace(" ", "_")}" style="font-size: 32px; color: #111; text-align: center; text-shadow: 1px 1px 1px #ccc;">{h1_title}</h1>'
+        if h2_title:
+            table += f'<h2 style="font-size: 24px; color: #FF0000; text-align: center;">{h2_title}</h2>'
         table += '<table style="width: 80%; margin: 20px auto; border-collapse: collapse; text-align: center;">'
         table += '<thead><tr><th style="border: 1px solid #ccc; padding: 10px; font-size: 18px; color: #333;">编号</th><th style="border: 1px solid #ccc; padding: 10px; font-size: 18px; color: #333;">名称</th><th style="border: 1px solid #ccc; padding: 10px; font-size: 18px; color: #333;">备注</th></tr></thead>'
         table += '<tbody>'
@@ -212,7 +224,7 @@ def generate_static_html():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>详细列表 - 表格展示</title>
+    <title>详细列表 - 量大从优</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>

@@ -4,6 +4,8 @@ import os
 
 # 目标网页URL列表
 urls = [
+    "https://www.xsdixiao.com/jxmz",
+    "https://www.xsdixiao.com/jxmz/page/2",
     "https://www.xsdixiao.com/xrqx",
     "https://www.xsdixiao.com/xrqx/page/2"
 
